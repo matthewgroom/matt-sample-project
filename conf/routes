@@ -8,3 +8,12 @@ GET     /                           controllers.HomeController.index
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+GET     /add_Marvel_Film            controllers.HomeController.add_Marvel_Film
+
++ nocsrf
+POST    /save                       controllers.HomeController.save
+
+GET    /get_Marvel_Film             controllers.HomeController.get_Marvel_Film
+
+POST    /getMarvelFilm              controllers.HomeController.getMarvelFilm

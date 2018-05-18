@@ -1,0 +1,16 @@
+@import model.MarvelFilm
+
+@(marvelList: Form[MarvelFilm])(implicit messages: Messages)
+
+@import helper._
+
+@main("Find Marvel Film") {
+    <h1>Find Marvel Film</h1>
+        @helper.form(routes.HomeController.getMarvelFilm()) {
+        @helper.inputText(marvelList("name"))
+        @helper.inputText(marvelList("release"))
+        @helper.inputText(marvelList("revenue"))
+            <button type="submit">Find Log</button>
+        }
+    <a href="/">Home Page</a>
+}

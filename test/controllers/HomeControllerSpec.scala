@@ -42,8 +42,8 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
       contentAsString(home) must include ("Marvel Film Database")
     }
 
-    "render the add_Marvel_Film" in {
-      val request = FakeRequest(GET, "/add_Marvel_Film")
+    "render the addMarvelFilm" in {
+      val request = FakeRequest(GET, "/addMarvelFilm")
       val add_Marvel_Film = route(app, request).get
 
       status(add_Marvel_Film) mustBe OK

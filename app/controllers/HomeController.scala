@@ -9,6 +9,7 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 import play.api.i18n._
+import play.api.libs.json.Json
 import play.api.routing.Router
 import play.api.routing.Router.Routes
 
@@ -32,41 +33,50 @@ class HomeController @Inject()(cc: ControllerComponents, messagesApi: MessagesAp
     Ok(views.html.index())
   }
 
-  def add_Marvel_Film() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.add_Marvel_Film(marvelFilmForm))
+  def addMarvelFilm() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.addMarvelFilm(marvelFilmForm))
   }
 
-  def get_Marvel_Film() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.get_Marvel_Film(marvelFilmForm))
+  def getMarvelFilm() = Action { implicit request: Request[AnyContent] =>
+    val sortedListAlpha = MarvelLibrary.films.sortBy(_.name)  // todo sorted list alphabetically
+    Ok(views.html.getMarvelFilm(sortedListAlpha, "List in Alphabetical Order"))
+  }
+
+  def sortListByReleaseDate() = Action { implicit request: Request[AnyContent] =>
+    val sortListByReleaseDate = MarvelLibrary.films.sortBy(_.release)
+    Ok(views.html.getMarvelFilm(sortListByReleaseDate,"List in date order"))
+  }
+
+  def sortListByRevenue() = Action { implicit request: Request[AnyContent] =>
+    val sortListByRevenue = MarvelLibrary.films.sortBy(_.revenue)
+    Ok(views.html.getMarvelFilm(sortListByRevenue, "List in order of revenue created"))
   }
 
   def save() = Action { implicit request =>
     marvelFilmForm.bindFromRequest.fold(
       formWithErrors => {
         println("That wasn't correct" + formWithErrors)
-        BadRequest(views.html.add_Marvel_Film(formWithErrors))
+        BadRequest(views.html.addMarvelFilm(formWithErrors))
       },
       marvelFilm => {
-        println("New Marvel Film" + marvelFilm)
         MarvelLibrary.addFilm(marvelFilm)
-        Redirect(routes.HomeController.index)
+        Redirect(routes.HomeController.index())
       }
     )
   }
-
-  def getMarvelFilm() = Action { implicit request =>
-    marvelFilmForm.bindFromRequest.fold(
-      formWithErrors => {
-        println("That wasn't correct" + formWithErrors)
-        BadRequest(views.html.get_Marvel_Film(formWithErrors))
-      },
-      foundFilm => {
-        println(foundFilm)
-        MarvelLibrary.getFilm(foundFilm)
-        Redirect(routes.HomeController.index)
-      }
-    )
-  }
+//
+//  def findMarvelFilm() = Action { implicit request =>
+//    marvelFilmForm.bindFromRequest.fold(
+//      formWithErrors => {
+//        println("That wasn't correct" + formWithErrors)
+//        BadRequest(views.html.getMarvelFilm(formWithErrors))
+//      },
+//      foundFilm => {
+//        MarvelLibrary.getFilms(foundFilm)
+//        Ok(Json.toJson(foundFilm))
+//      }
+//    )
+//  }
 
   val marvelFilmForm = Form[MarvelFilm](
     mapping(

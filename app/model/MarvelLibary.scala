@@ -7,14 +7,31 @@ object MarvelLibrary {
 
   //var filmsI = immutable.List.empty[MarvelFilm]
 
-  val films = List.empty[MarvelFilm]
+  var films = List(MarvelFilm("Iron Man", 2008, 318412101),MarvelFilm("Avengers: Infinity War",2018,626441638),MarvelFilm("Captain America: Civil War",2016,120000000))//List.empty[MarvelFilm]
 
-  def addFilm(film: MarvelFilm): List[MarvelFilm] = {
-    films :+ film
+
+  def addFilm(film: MarvelFilm): Unit = {
+   if (!films.contains(film))
+     films = films :+ film
   }
-  def getFilm(film: MarvelFilm): List[MarvelFilm] = {
-    films
+
+//  def addFilm(film: MarvelFilm) = {
+//   if (!films.contains(film))
+//     films = films :+ film
+//  }
+//
+  def getFilms(film: MarvelFilm): MarvelFilm = {
+    if (films.contains(film)) {
+      film
+    } else {
+      film
+    }
   }
+
+//  def checkFilmName(film: MarvelFilm) = {
+//    val check = films.contains(film)
+//  }
+
 }
 
 

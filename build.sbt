@@ -11,6 +11,9 @@ coverageExcludedPackages := """controllers\..*Reverse.*;router.Routes.*;"""
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
+libraryDependencies ++= Seq(
+  "org.webjars" % "bootstrap" % "3.3.7"
+)
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.example.controllers._"

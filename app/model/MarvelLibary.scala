@@ -15,11 +15,6 @@ object MarvelLibrary {
      films = films :+ film
   }
 
-//  def addFilm(film: MarvelFilm) = {
-//   if (!films.contains(film))
-//     films = films :+ film
-//  }
-//
   def getFilms(film: MarvelFilm): MarvelFilm = {
     if (films.contains(film)) {
       film
@@ -27,10 +22,6 @@ object MarvelLibrary {
       film
     }
   }
-
-//  def checkFilmName(film: MarvelFilm) = {
-//    val check = films.contains(film)
-//  }
 
 }
 

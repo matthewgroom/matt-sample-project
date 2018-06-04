@@ -64,19 +64,6 @@ class HomeController @Inject()(cc: ControllerComponents, messagesApi: MessagesAp
       }
     )
   }
-//
-//  def findMarvelFilm() = Action { implicit request =>
-//    marvelFilmForm.bindFromRequest.fold(
-//      formWithErrors => {
-//        println("That wasn't correct" + formWithErrors)
-//        BadRequest(views.html.getMarvelFilm(formWithErrors))
-//      },
-//      foundFilm => {
-//        MarvelLibrary.getFilms(foundFilm)
-//        Ok(Json.toJson(foundFilm))
-//      }
-//    )
-//  }
 
   val marvelFilmForm = Form[MarvelFilm](
     mapping(

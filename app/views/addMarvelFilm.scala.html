@@ -5,12 +5,61 @@
 @import helper._
 
 @main("Add Marvel Film") {
-    <h1>Add Marvel Film</h1>
-        @helper.form(routes.HomeController.save()) {
-        @helper.inputText(marvelList("name"))
-        @helper.inputText(marvelList("release"))
-        @helper.inputText(marvelList("revenue"))
-    <input type="submit" value = "Create Log">
-        }
+    <div class="container">
+
+    <h1>Add Film</h1>
+
+    <form action="/save" method="POST" >
+
+        <div class="form-group">
+
+        <dl class=" " id="name_field">
+
+            <dt><label for="name">Name Of Film</label></dt>
+
+            <dd>
+                <input type="text" class="form-control" id="name" name="name" value="" />
+            </dd>
+
+
+        </dl>
+
+
+        <dl class=" " id="release_field">
+
+            <dt><label for="release">Year Of Release</label></dt>
+
+            <dd>
+                <input type="text" class="form-control" id="release" name="release" value="" />
+            </dd>
+
+
+            <dd class="info">Numeric</dd>
+
+        </dl>
+
+
+
+
+
+        <dl class=" " id="revenue_field">
+
+            <dt><label for="revenue">Revenue Made</label></dt>
+
+            <dd>
+                <input type="text" class="form-control" id="revenue" name="revenue" value="" />
+            </dd>
+
+
+            <dd class="info">Numeric</dd>
+
+        </dl>
+
+        </div>
+
+        <input type="submit"  class="btn btn-default" value = "Create Log">
+
+    </form>
     <a href="/">Home Page</a>
+    </div>
 }

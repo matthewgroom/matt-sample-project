@@ -1,0 +1,46 @@
+@import model.Actor
+
+@(Actors: Form[Actor])(implicit messages: Messages)
+
+    @main("Add Marvel Film") {
+    <div class="container">
+
+        <h1>Add Actor</h1>
+
+        <form action="/saveActor" method="POST" >
+
+            <div class="form-group">
+
+                <dl class=" " id="name_field">
+
+                    <dt><label for="name">Name Of Actor</label></dt>
+
+                    <dd>
+                        <input type="text" class="form-control" id="name" name="name" value="" />
+                    </dd>
+
+
+                </dl>
+
+
+                <dl class=" " id="release_field">
+
+                    <dt><label for="release">Age of Actor</label></dt>
+
+                    <dd>
+                        <input type="text" class="form-control" id="age" name="age" value="" />
+                    </dd>
+
+
+                    <dd class="info">Numeric</dd>
+
+                </dl>
+
+            </div>
+
+            <input type="submit"  class="btn btn-default" value = "Create Log">
+
+        </form>
+        <a href="/">Home Page</a>
+    </div>
+}

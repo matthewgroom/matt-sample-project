@@ -1,3 +1,3 @@
 # sample-project
 
-test changes changes
+test changes changes.

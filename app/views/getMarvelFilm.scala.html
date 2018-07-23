@@ -2,30 +2,26 @@
 
 @(marvelList: List[MarvelFilm], title: String)(implicit messages: Messages)
 
-@title
-
-
 @main("List Marvel Film") {
 
         <div class="container">
-        <table class ="table">
-            <thead>
+          <h1>@title</h1>
+            <table class ="table">
+                <thead>
+                    <tr>
+                        <th>Film Name</th>
+                        <th>Release Date</th>
+                        <th>Revenue Amount</th>
+                    </tr>
+                </thead>
+                @for( film <- marvelList) {
                 <tr>
-                    <th>Film Name</th>
-                    <th>Release Date</th>
-                    <th>Revenue Amount</th>
+                    <td>@{film.name}</td>
+                    <td>@{film.release}</td>
+                    <td>@{film.revenue}</td>
                 </tr>
-            </thead>
-            @for( film <- marvelList) {
-            <tr>
-                <td>@{film.name}</td>
-                <td>@{film.release}</td>
-                <td>@{film.revenue}</td>
-            </tr>
-            }
-        </table>
+                }
+            </table>
+          <a href="/">Home Page</a>
         </div>
-
-
-    <a href="/">Home Page</a>
 }

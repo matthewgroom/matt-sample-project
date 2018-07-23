@@ -1,0 +1,25 @@
+@import model.Actor
+
+@(actorList: List[Actor], title: String)(implicit messages: Messages)
+
+@main("List Marvel Film") {
+
+    <div class="container">
+        <h1>@title</h1>
+        <table class ="table">
+            <thead>
+                <tr>
+                    <th>Actor Name</th>
+                    <th>Release Date</th>
+                </tr>
+            </thead>
+            @for( actor <- actorList) {
+                <tr>
+                    <td>@{actor.name}</td>
+                    <td>@{actor.age}</td>
+                </tr>
+            }
+        </table>
+        <a href="/">Home Page</a>
+    </div>
+}

@@ -7,35 +7,34 @@ object MarvelLibrary {
 
   //var filmsI = immutable.List.empty[MarvelFilm]
 
-  var films = List(MarvelFilm("Iron Man", 2008, 318412101),MarvelFilm("Avengers: Infinity War",2018,626441638),MarvelFilm("Captain America: Civil War",2016,120000000))//List.empty[MarvelFilm]
+  val films = List(MarvelFilm("Iron Man", 2008, 318412101),MarvelFilm("Avengers: Infinity War",2018,626441638),MarvelFilm("Captain America: Civil War",2016,120000000))//List.empty[MarvelFilm]
 
 
-  def addFilm(film: MarvelFilm): Unit = {
-   if (!films.contains(film))
-     films = films :+ film
-  }
-
-//  def addFilm(film: MarvelFilm) = {
-//   if (!films.contains(film))
-//     films = films :+ film
-//  }
-//
-  def getFilms(film: MarvelFilm): MarvelFilm = {
-    if (films.contains(film)) {
-      film
-    } else {
-      film
+  def addFilm(film: MarvelFilm): List[MarvelFilm] = {
+    film match {
+      case film if !films.contains(film) => films:+ film
+      case _ => Nil
     }
   }
 
-//  def checkFilmName(film: MarvelFilm) = {
-//    val check = films.contains(film)
-//  }
+  def getFilms(film: MarvelFilm): List[MarvelFilm] = {
+    film match {
+      case film if films.contains(film) => films
+      case _ => Nil
+    }
+  }
 
+  def doesFilmExist(film: MarvelFilm) : Boolean = {
+      if (!films.exists(flm => flm.name == film.name)) {
+        false
+      }else {
+        true
+      }
+   }
 }
 
 
-
+//x => x
 
 /*
 1. number of films in empty library should be 0

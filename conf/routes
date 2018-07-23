@@ -26,3 +26,9 @@ GET     /getMarvelFilm              controllers.HomeController.getMarvelFilm
 GET     /sortListByReleaseDate      controllers.HomeController.sortListByReleaseDate
 + nocsrf
 GET     /sortListByRevenue          controllers.HomeController.sortListByRevenue
++ nocsrf
+GET     /addActor                   controllers.HomeController.addActor
++ nocsrf
+POST    /saveActor                  controllers.HomeController.saveActor
++ nocsrf
+GET     /listActors                 controllers.HomeController.listActors
